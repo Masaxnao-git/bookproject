@@ -1,8 +1,8 @@
 databases:
- - name: mysitedb
-   plan: free
-   databaseName: book
-   user: book
+  - name: mysitedb
+    plan: free
+    databaseName: book
+    user: book
 
 services:
  - type: web
@@ -18,10 +18,3 @@ services:
           property: connectionString
       - key: WEB_CONCURRENCY
         value: 4
-
-  
-        
-          
-          
-      
-        
