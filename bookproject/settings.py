@@ -1,3 +1,4 @@
+import os
 import dj_database_url
 from pathlib import Path
 
@@ -10,6 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-otcv#(^3)!aig8has=*!i)_z0cg4wff3)pe=-k=r*s16*h%yrc'
+#SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -74,7 +76,7 @@ DATABASES = {
 
 if not DEBUG:
     DATABASES = {
-        'default': dj_database_url.configc(
+        'default': dj_database_url.config(
             # Replace this value with your local database's connection string.
             default='postgresql://postgres@localhost:5432/bookproject',
             conn_max_age=600
@@ -115,7 +117,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
+
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 MEDIA_URL = '/media/'
 
