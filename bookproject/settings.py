@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-otcv#(^3)!aig8has=*!i)_z0cg4wff3)pe=-k=r*s16*h%yrc
 #SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -78,7 +78,7 @@ if not DEBUG:
     DATABASES = {
         'default': dj_database_url.config(
             # Replace this value with your local database's connection string.
-            default='postgresql://postgres@localhost:5432/bookproject',
+            default='postgresql://postgres:postgres@localhost:5432/bookproject',
             conn_max_age=600
         )
     }
